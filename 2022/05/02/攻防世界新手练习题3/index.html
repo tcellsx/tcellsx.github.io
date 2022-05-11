@@ -481,16 +481,35 @@
 提示使用&quot;https://www.goole.com&quot;,于是使用referer:https://www.goole.com,最终获取flag。
 </code></pre>
 <p><img src="https://github.com/tcellsx/tcellsx-.github.io/raw/main/2022/05/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E7%BB%83%E4%B9%A0%E9%A2%983/xff_referer2.png" alt="xff_referer"></p>
-<h3 id="2-php的一句话木马"><a href="#2-php的一句话木马" class="headerlink" title="2.php的一句话木马"></a>2.php的一句话木马</h3><h3 id="1-使用BP用system-ls-查看目录下所有的文件"><a href="#1-使用BP用system-ls-查看目录下所有的文件" class="headerlink" title="(1)使用BP用system(ls)查看目录下所有的文件;"></a>(1)使用BP用system(ls)查看目录下所有的文件;</h3><pre><code>一句话木马不直接发送命令编码，而是将命令代码直接发送给木马端执行。
+<h3 id="2-php的一句话木马"><a href="#2-php的一句话木马" class="headerlink" title="2.php的一句话木马"></a>2.php的一句话木马</h3><p><img src="https://github.com/tcellsx/tcellsx-.github.io/raw/main/2022/05/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E7%BB%83%E4%B9%A0%E9%A2%983/php%E7%9A%84%E4%B8%80%E5%8F%A5%E8%AF%9D%E4%BB%A3%E7%A0%810.png" alt="php的一句话木马"></p>
+<pre><code>一句话木马不直接发送命令编码，而是将命令代码直接发送给木马端执行。
 </code></pre>
-<p><img src="https://github.com/tcellsx/tcellsx-.github.io/raw/main/2022/05/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E7%BB%83%E4%B9%A0%E9%A2%983/php%E7%9A%84%E4%B8%80%E5%8F%A5%E8%AF%9D%E4%BB%A3%E7%A0%810.png" alt="php的一句话木马"></p>
-<pre><code>此题看代码给出是post请求，在BP中截取后将请求头部的get改为post
+<p><img src="https://github.com/tcellsx/tcellsx-.github.io/raw/main/2022/05/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E7%BB%83%E4%B9%A0%E9%A2%983/php%E7%9A%84%E4%B8%80%E5%8F%A5%E8%AF%9D%E4%BB%A3%E7%A0%812.jpg" alt="php的一句话木马"></p>
+<h3 id="1-使用BP用system-ls-查看目录下所有的文件"><a href="#1-使用BP用system-ls-查看目录下所有的文件" class="headerlink" title="(1)使用BP用system(ls);查看目录下所有的文件;"></a>(1)使用BP用system(ls);查看目录下所有的文件;</h3><pre><code>此题看代码给出是post请求，在BP中截取后将请求头部的get改为post
 </code></pre>
 <p><img src="https://github.com/tcellsx/tcellsx-.github.io/raw/main/2022/05/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E7%BB%83%E4%B9%A0%E9%A2%983/php%E7%9A%84%E4%B8%80%E5%8F%A5%E8%AF%9D%E4%BB%A3%E7%A0%811.png" alt="php的一句话木马"></p>
 <pre><code>输入shell=system(ls);查看目录下的文件发现了flag.txt
 直接在URL后输入/flag.txt出现flag
 </code></pre>
-<h3 id="2"><a href="#2" class="headerlink" title="(2)"></a>(2)</h3>
+<h3 id="2-使用BP用shell-x3D-system-‘find-x2F-name-“flag-”‘-搜索带有flag关键词的文件。"><a href="#2-使用BP用shell-x3D-system-‘find-x2F-name-“flag-”‘-搜索带有flag关键词的文件。" class="headerlink" title="(2)使用BP用shell&#x3D;system(‘find &#x2F; -name “flag*”‘);搜索带有flag关键词的文件。"></a>(2)使用BP用shell&#x3D;system(‘find &#x2F; -name “flag*”‘);搜索带有flag关键词的文件。</h3><pre><code>注意命令不能够打错
+错误示范：shell=system(&quot;find/-name&#39;flag*&#39;&quot;);
+正确示范：shell=system(&#39;find / -name &quot;flag*&quot;&#39;);
+即：find 路径 -name &quot;flag&quot;
+</code></pre>
+<p><img src="https://github.com/tcellsx/tcellsx-.github.io/raw/main/2022/05/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E7%BB%83%E4%B9%A0%E9%A2%983/php%E7%9A%84%E4%B8%80%E5%8F%A5%E8%AF%9D%E4%BB%A3%E7%A0%813.png" alt="php的一句话木马"></p>
+<pre><code>找到目标路径。
+使用cat命令，cat命令是用于显示目标文件的内容，主要是获取内容较少的文件内容。
+shell=system(&#39;cat /var/www/html/flag.txt&#39;);
+即：cat 路径
+</code></pre>
+<p><img src="https://github.com/tcellsx/tcellsx-.github.io/raw/main/2022/05/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E7%BB%83%E4%B9%A0%E9%A2%983/php%E7%9A%84%E4%B8%80%E5%8F%A5%E8%AF%9D%E4%BB%A3%E7%A0%814.png" alt="php的一句话木马"></p>
+<h3 id="3-使用蚁剑菜刀"><a href="#3-使用蚁剑菜刀" class="headerlink" title="(3)使用蚁剑菜刀"></a>(3)使用蚁剑菜刀</h3><pre><code>安装蚁剑后添加数据可以直接找到flag。
+
+![php的一句话木马](https://github.com/tcellsx/tcellsx-.github.io/raw/main/2022/05/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E7%BB%83%E4%B9%A0%E9%A2%983/php%E7%9A%84%E4%B8%80%E5%8F%A5%E8%AF%9D%E4%BB%A3%E7%A0%814.png)
+
+![php的一句话木马](https://github.com/tcellsx/tcellsx-.github.io/raw/main/2022/05/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E7%BB%83%E4%B9%A0%E9%A2%983/php%E7%9A%84%E4%B8%80%E5%8F%A5%E8%AF%9D%E4%BB%A3%E7%A0%814.png)
+</code></pre>
+
                 
             </div>
             <hr/>
